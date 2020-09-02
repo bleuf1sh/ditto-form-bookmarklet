@@ -59,9 +59,9 @@ function RANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__showPrompt() {
   promptEl.style.flexDirection = 'column';
 
   promptEl.innerHTML = `
-  <button>CLOSE</button>
-  <button>SAVE</button>
-  <button>RESTORE</button>
+  <button><h2>CLOSE</h2></button>
+  <button><h2>SAVE</h2></button>
+  <button><h2>RESTORE</h2></button>
   `;
 
   const buttons = promptEl.querySelectorAll('button');
