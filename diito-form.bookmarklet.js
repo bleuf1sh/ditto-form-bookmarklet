@@ -66,7 +66,7 @@ function RANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__showPrompt() {
 
   const buttons = promptEl.querySelectorAll('button');
   buttons.forEach((el) => {
-    el.style.height = '40px';
+    el.style.height = '20vh';
     el.style.margin = '8px';
   });
 
