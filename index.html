@@ -1,9 +1,23 @@
 <html>
 
 <body>
+  <h2>Bookmark this page.</h2>
+  <h2>Then copy the text below</h2>
+  <h2>Edit the bookmark and paste the text into the url field</h2>
+  <input id="input" type="text" disabled />
+  <button id="copy">Copy</button>
   <script>
     const bookmarklet = `javascript:(function()%7Bconst%20uniqPrefix%20%3D%20%60Programming_0b0110_Days_A_Week%60%3Bfunction%20RANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__getLocalStorageKey(el)%20%7Bconst%20elId%20%3D%20%60_%24%7Bel.id%7D_%24%7Bel.type%7D_%24%7Bel.getAttribute('aria-describedby')%7D%60%3Breturn%20%60%24%7BuniqPrefix%7D__%24%7BelId%7D%60%3B%7Dfunction%20RANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__saveAllInputs()%20%7Bconsole.log(%60saveAllInputsToCookie...%60)%3Blet%20saveInputsCount%20%3D%200%3B(document.querySelectorAll('input')).forEach((inputEl)%20%3D%3E%20%7Bconst%20inputVal%20%3D%20inputEl.value%3Bif%20(!inputVal)%20%7B%20return%3B%20%7DlocalStorage.setItem(RANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__getLocalStorageKey(inputEl)%2C%20inputVal)%3BsaveInputsCount%20%2B%3D%201%3B%7D)%3Bconsole.log(%60saveAllInputsToCookie...%20%24%7BsaveInputsCount%7D%20done%60)%3Balert(%60Saved%20%24%7BsaveInputsCount%7D%20inputs%60)%3B%7Dfunction%20RANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__restoreAllInputs()%20%7Bconsole.log(%60restoreAllInputsToCookie...%60)%3Blet%20restoredInputsCount%20%3D%200%3B(document.querySelectorAll('input')).forEach((inputEl)%20%3D%3E%20%7Bif%20(inputEl.value)%20%7B%20return%3B%20%7Dconst%20savedValue%20%3D%20localStorage.getItem(RANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__getLocalStorageKey(inputEl))%3Bif%20(savedValue)%20%7BinputEl.value%20%3D%20savedValue%3Bconst%20event%20%3D%20new%20Event('input'%2C%20%7Bbubbles%3A%20true%2Ccancelable%3A%20true%2C%7D)%3BinputEl.dispatchEvent(event)%3BrestoredInputsCount%20%2B%3D%201%3B%7D%7D)%3Bconsole.log(%60restoreAllInputsToCookie...%20%24%7BrestoredInputsCount%7D%20done%60)%3Balert(%60Restored%20%24%7BrestoredInputsCount%7D%20inputs%60)%3B%7Dfunction%20RANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__showPrompt()%20%7Bconst%20promptEl%20%3D%20document.createElement('div')%3BpromptEl.style.position%20%3D%20'fixed'%3BpromptEl.style.top%20%3D%20'0'%3BpromptEl.style.left%20%3D%20'0'%3BpromptEl.style.right%20%3D%20'0'%3BpromptEl.style.zIndex%20%3D%20'9999'%3BpromptEl.style.background%20%3D%20'darkolivegreen'%3BpromptEl.style.margin%20%3D%20'10px'%3BpromptEl.style.padding%20%3D%20'10px'%3BpromptEl.style.alignContent%20%3D%20'center'%3BpromptEl.style.textAlign%20%3D%20'center'%3BpromptEl.style.display%20%3D%20'flex'%3BpromptEl.style.flexDirection%20%3D%20'column'%3BpromptEl.innerHTML%20%3D%20%60%3Cbutton%3ECLOSE%3C%2Fbutton%3E%3Cbutton%3ESAVE%3C%2Fbutton%3E%3Cbutton%3ERESTORE%3C%2Fbutton%3E%60%3Bconst%20buttons%20%3D%20promptEl.querySelectorAll('button')%3Bbuttons.forEach((el)%20%3D%3E%20%7Bel.style.height%20%3D%20'40px'%3Bel.style.margin%20%3D%20'8px'%3B%7D)%3Bbuttons%5B0%5D.onclick%20%3D%20()%20%3D%3E%20%7BpromptEl.remove()%3B%7D%3Bbuttons%5B1%5D.onclick%20%3D%20()%20%3D%3E%20%7BRANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__saveAllInputs()%3BpromptEl.remove()%3B%7D%3Bbuttons%5B2%5D.onclick%20%3D%20()%20%3D%3E%20%7BRANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__restoreAllInputs()%3BpromptEl.remove()%3B%7D%3Bdocument.body.append(promptEl)%3B%7DRANDOM_PREFIX_TO_AVOID_SCOPE_ISSUES__showPrompt()%7D)()`;
-    window.location.href = bookmarklet;
+    document.querySelector('input').value = bookmarklet;
+
+    function copy() {
+      document.querySelector('input').select();
+      document.execCommand('copy');
+    }
+
+    document.querySelector('button').onclick = () => {
+      copy();
+    }
   </script>
 </body>
 
